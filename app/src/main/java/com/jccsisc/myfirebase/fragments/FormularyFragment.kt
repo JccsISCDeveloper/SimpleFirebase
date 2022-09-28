@@ -1,13 +1,9 @@
 package com.jccsisc.myfirebase.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jccsisc.myfirebase.R
@@ -25,5 +21,10 @@ class FormularyFragment : Fragment(R.layout.fragment_formulary) {
         super.onViewCreated(binding.root, savedInstanceState)
 
         initElements()
+
+    }
+
+    fun showToast(msj: String) {
+        Toast.makeText(requireActivity(), msj, Toast.LENGTH_SHORT).show()
     }
 }

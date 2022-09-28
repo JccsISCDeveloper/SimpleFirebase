@@ -1,6 +1,5 @@
 package com.jccsisc.myfirebase.fragments
 
-import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -24,7 +23,7 @@ fun FormularyFragment.initElements() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireActivity(), "Error al leer datos", Toast.LENGTH_SHORT).show()
+                showToast("Error al leer datos")
             }
         }
         dataRef.addValueEventListener(listener)
@@ -32,6 +31,16 @@ fun FormularyFragment.initElements() {
         btnSend.setOnClickListener {
             val dato = tieDato.text.toString()
             dataRef.setValue(dato)
+                .addOnSuccessListener {
+                    showToast("Enviando...")
+                }
+                .addOnFailureListener {
+                    showToast("Error al enviar.")
+                }
+                .addOnCompleteListener {
+                    showToast("Terminado.")
+                }
+
             tieDato.setText("")
         }
 
