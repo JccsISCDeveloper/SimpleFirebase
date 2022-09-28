@@ -45,7 +45,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tieDato"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -54,6 +55,7 @@
             android:layout_height="60dp"
             android:text="@string/txt_send"
             android:textSize="20sp"
+            android:textAllCaps="false"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="60dp"

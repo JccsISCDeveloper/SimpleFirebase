@@ -15,36 +15,15 @@ import com.jccsisc.myfirebase.databinding.FragmentFormularyBinding
 
 class FormularyFragment : Fragment(R.layout.fragment_formulary) {
 
-    private lateinit var binding: FragmentFormularyBinding
+    lateinit var binding: FragmentFormularyBinding
+
+    val dataBase by lazy { Firebase.database.reference }
+    val dataRef by lazy { dataBase.child("simple_firebase").child("data") }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFormularyBinding.bind(view)
         super.onViewCreated(binding.root, savedInstanceState)
 
-        binding.apply {
-
-            val dataBase = Firebase.database.reference
-
-            val listener = object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val data = snapshot.getValue(String::class.java)
-                    tvData.text = "Firebase remote: $data"
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            }
-
-            val dataRef = dataBase.child("simple_firebase").child("data")
-            dataRef.addValueEventListener(listener)
-
-            btnSend.setOnClickListener {
-                val dato = tieDato.text.toString()
-                dataRef.setValue(dato)
-                tieDato.setText("")
-            }
-
-        }
+        initElements()
     }
 }
