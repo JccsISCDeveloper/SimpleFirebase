@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/formularyFragment">
+
+    <fragment
+        android:id="@+id/formularyFragment"
+        tools:layout="@layout/fragment_formulary"
+        android:name="com.jccsisc.myfirebase.fragments.FormularyFragment"
+        android:label="FormularyFragment" />
+</navigation>

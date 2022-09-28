@@ -21,21 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
 
-            val dataBase = Firebase.database.reference
-
-            val listener = object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val data = snapshot.getValue(String::class.java)
-                    tvData.text = "Firebase remote: $data"
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            }
-
-            val dataRef = dataBase.child("simple_firebase").child("data")
-            dataRef.addValueEventListener(listener)
 
         }
     }
